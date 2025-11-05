@@ -7,7 +7,7 @@ import os
 selected_file_path = None
 root = tk.Tk()
 root.title("Neural Defender")
-root.geometry("700x500")
+root.geometry("720x510")
 root.configure(bg="#f5f5f5")
 root.iconbitmap("Logo.ico")
 
@@ -84,24 +84,33 @@ def help_popup():
         "How to Use Neural Defender:\n\n"
         "1️ Click 'Select File' to choose the file you want to scan.\n"
         "2️ The selected file name will appear above the buttons.\n"
-        "3️ Click 'File Upload' to start the scan.\n"
+        "3️ Click 'Scan' to start the scan.\n"
         "4️ Results will be displayed in the output window."
     )
-
-upload_btn = tk.Button(
-    left_frame, text="File Upload", font=("Helvetica", 12, "bold"),
-    width=20, height=2, bg="#e0e0e0", command=start_scan
-)
-upload_btn.pack(pady=15)
+def support_btn():
+     messagebox.showinfo(
+        "Support",
+        "Contact the Developers -:\n\n"
+        "Name     Branch\n\n"
+        "Aditya - AI&DS \n"
+        "Paras -  AI&DS \n"
+        "Shyam -  AI&DS \n"
+        "Domain - Ai&DS"
+     )
 
 select_btn = tk.Button(
     left_frame, text="Select File", font=("Helvetica", 12, "bold"),
     width=20, height=2, bg="#e0e0e0", command=select_file
 )
 select_btn.pack(pady=10)
+upload_btn = tk.Button(
+    left_frame, text="Scan", font=("Helvetica", 12, "bold"),
+    width=20, height=2, bg="#e0e0e0", command=start_scan
+)
+upload_btn.pack(pady=15)
 
 right_frame = tk.Frame(main_frame, bg="#f5f5f5")
-right_frame.grid(row=0, column=1, padx=20, pady=10, sticky="n")
+right_frame.grid(row=0, column=1, padx=20, pady=12, sticky="n")
 
 output_label = tk.Label(
     right_frame, text="Scan Output",
@@ -128,6 +137,12 @@ help_btn = tk.Button(
     bg="#1a2a3a", fg="white", command=help_popup
 )
 help_btn.place(x=620, y=450)
+
+support_btn = tk.Button(
+    root, text="Support", font=("Helvetica", 11, "bold"),
+    bg="#2bb6b6", fg="white", command=support_btn
+)
+support_btn.place(x=605, y=38)
 
 footer_label = tk.Label(
     root,
