@@ -55,7 +55,7 @@ def select_file():
     file_name = os.path.basename(file_path)
     file_label.config(text=f"Selected: {file_name}")
     output_text.delete("1.0", tk.END)
-    output_text.insert(tk.END, f" File selected: {file_name}\nClick 'File Upload' to start scanning.\n")
+    output_text.insert(tk.END, f"File selected: {file_name}\nClick 'File Upload' to start scanning.\n")
 
 def start_scan():
     global selected_file_path
@@ -70,6 +70,7 @@ def start_scan():
         output_text.insert(tk.END, f"{result}\n")
         if "INFECTED" in result.upper():
             status_label.config(text=" INFECTED", fg="red")
+            os.remove(f"{selected_file_path}")
         elif "SAFE" in result.upper():
             status_label.config(text=" SAFE", fg="green")
         else:

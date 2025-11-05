@@ -8,12 +8,12 @@ def scan_file(file_path,signature):
       return f"File Not Found: File Name -: {file_name}"
     for sign_type,sign_value in signature : #created 2 new varible signatue type and signature value 
        if sign_type == 'hash' and hash_value == sign_value : #this part runs when the signature and the value of the signature is matched with the database
-         return f"!!INFECTED FILE -: The file {file_name} is Infected\n hash = {hash_value}" #if the signature(MD5 HASH) is matched with he database signature values and type then it runs this part
+         return f"!!INFECTED FILE -: The file {file_name} is Infected\n hash = {hash_value}\n|| The file {file_name} is removed" #if the signature(MD5 HASH) is matched with he database signature values and type then it runs this part
     with open(file_path, 'r', errors = 'ignore') as f:#use to open a file and read it 
         content = f.read()#reading the file that is selected by the user
         for sign_type , sign_value in signature: #checking the sigature type of the file and match it with the data base if matched then declare the file infected  
                 if sign_type == "string" and sign_value in content:#searching in the selected file if 
-                   return f'String Matched !! The file {file_name} is Infected\n string = {sign_value}'
+                   return f'String Matched !! The file {file_name} is Infected\n string = {sign_value}\n|| The file {file_name} is removed '
     return f"{file_name} is safe"
   except Exception as exc:
      return f"Error in scanning {file_path}.{exc}"
