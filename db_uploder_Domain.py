@@ -1,5 +1,5 @@
 import mysql.connector
-def upload(file):
+def upload(input):
     try:
         connection = mysql.connector.connect(
             host="gateway01.ap-southeast-1.prod.aws.tidbcloud.com",    
@@ -11,13 +11,14 @@ def upload(file):
         )
 
         cursor = connection.cursor()
-        cursor.execute(f"")
+        cursor.execute(input)
         data = cursor.fetchall()
 
         cursor.close()
         connection.close()
-
-        return data
+        print(data)
     except mysql.connector.Error as err :
         print(f"db error : {err}")
+input = "SELECT * FROM signatures"
+upload(input)
 
