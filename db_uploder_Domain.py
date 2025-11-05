@@ -1,6 +1,5 @@
 import mysql.connector
-
-def get_signatures():
+def upload(file):
     try:
         connection = mysql.connector.connect(
             host="gateway01.ap-southeast-1.prod.aws.tidbcloud.com",    
@@ -12,7 +11,7 @@ def get_signatures():
         )
 
         cursor = connection.cursor()
-        cursor.execute("SELECT type, signature FROM signatures")
+        cursor.execute(f"")
         data = cursor.fetchall()
 
         cursor.close()
@@ -21,3 +20,4 @@ def get_signatures():
         return data
     except mysql.connector.Error as err :
         print(f"db error : {err}")
+
